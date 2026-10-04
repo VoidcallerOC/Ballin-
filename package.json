@@ -1,6 +1,7 @@
 {
-  "name": "app-builder-workspace",
+  "name": "balln",
   "private": true,
+  "description": "Balln marketplace prospect demo. TanStack Start, React 19, Tailwind 4, Nitro (Vercel preset).",
   "sideEffects": false,
   "type": "module",
   "overrides": {
