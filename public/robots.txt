@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# No sitemap URL until this build has a confirmed public host.
+# Do not point crawlers at balln.shop — that domain is the live
+# prototype, and these pages are not published there.

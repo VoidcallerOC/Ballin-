@@ -1,0 +1,390 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --color-bg: #09080c;
+  --color-bg-deep: #050409;
+  --color-surface: #141218;
+  --color-surface-2: #1c1822;
+  --color-fg: #f7f4f2;
+  --color-muted: #c8c0c9;
+  --color-faint: #9a919c;
+  --color-line: #2e2933;
+  --color-pink: #ff4fa3;
+  --color-pink-ink: #1a0610;
+  --color-cyan: #5ad8ff;
+  --color-orange: #ff5a1f;
+  --radius-card: 1.25rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    text-rendering: optimizeLegibility;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  section {
+    scroll-margin-top: 5.5rem;
+  }
+
+  ::selection {
+    background: var(--color-pink);
+    color: var(--color-pink-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-cyan);
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@utility display-hero {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: clamp(2.45rem, 6.6vw, 4.85rem);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+}
+
+@utility display-section {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  line-height: 0.88;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+@utility kicker {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  color: var(--color-pink);
+}
+
+@utility stamp {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.court-lines {
+  background-image:
+    linear-gradient(to right, transparent, color-mix(in srgb, var(--color-pink) 55%, transparent) 12%, transparent 28%),
+    linear-gradient(to bottom, transparent 18%, color-mix(in srgb, var(--color-fg) 14%, transparent) 18%, color-mix(in srgb, var(--color-fg) 14%, transparent) 19%, transparent 19%);
+  background-repeat: no-repeat;
+  background-size: 100% 1px, 1px 100%;
+  background-position: top left, 12% top;
+}
+
+.pulse-dot {
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@utility display-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.75rem, 8vw, 4.75rem);
+  line-height: 0.86;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.slab {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+}
+
+.slab[data-rarity="1/1"] {
+  border-color: color-mix(in srgb, var(--color-pink) 72%, var(--color-line));
+}
+
+.slab[data-rarity="Legend"] {
+  border-color: color-mix(in srgb, var(--color-orange) 70%, var(--color-line));
+}
+
+.slab[data-rarity="Rare"] {
+  border-color: color-mix(in srgb, var(--color-cyan) 45%, var(--color-line));
+}
+
+.slab-photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--color-bg-deep);
+}
+
+.slab-featured .slab-photo {
+  aspect-ratio: 3 / 4;
+}
+
+.slab-bare .slab-photo {
+  aspect-ratio: 2 / 3;
+}
+
+.slab:hover .sport-field,
+.sport-door:hover .sport-field {
+  transform: scale(1.04);
+}
+
+.wax {
+  --wax: var(--color-muted);
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(90% 50% at 100% 0%, color-mix(in srgb, var(--wax) 24%, transparent), transparent 62%),
+    var(--color-bg-deep);
+  color: var(--wax);
+  container-type: inline-size;
+}
+
+.wax-one {
+  --wax: var(--color-pink);
+}
+
+.wax-legend {
+  --wax: var(--color-orange);
+}
+
+.wax-rare {
+  --wax: var(--color-cyan);
+}
+
+.wax-common {
+  --wax: var(--color-muted);
+}
+
+.wax::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    118deg,
+    transparent 36%,
+    color-mix(in srgb, var(--wax) 16%, transparent) 48%,
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+.sport-field {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  opacity: 0.55;
+  transition: transform 240ms ease;
+}
+
+.wax .sport-field {
+  mask-image: linear-gradient(to bottom, black 0%, black 52%, transparent 78%);
+}
+
+.wax-body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.15rem;
+  padding: 0.85rem;
+}
+
+.wax-num {
+  position: absolute;
+  top: 14%;
+  left: 0.7rem;
+  font-family: var(--font-display);
+  font-size: 46cqi;
+  font-weight: 700;
+  line-height: 0.78;
+  letter-spacing: -0.03em;
+}
+
+.wax-kicker,
+.wax-sport {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.wax-name {
+  font-family: var(--font-display);
+  font-size: 12cqi;
+  font-weight: 700;
+  line-height: 0.86;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--color-fg);
+}
+
+.wax-sport {
+  color: var(--color-muted);
+}
+
+.wax-compact .wax-kicker,
+.wax-compact .wax-name,
+.wax-compact .wax-sport {
+  display: none;
+}
+
+.wax-compact .wax-num {
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  font-size: 42cqi;
+}
+
+.sport-art {
+  position: absolute;
+  inset: 0;
+  background: var(--color-bg-deep);
+  color: var(--color-orange);
+}
+
+.sport-art[data-sport="Football"] {
+  color: var(--color-pink);
+}
+
+.sport-art[data-sport="Baseball"] {
+  color: var(--color-cyan);
+}
+
+.sport-art[data-sport="Soccer"] {
+  color: var(--color-fg);
+}
+
+.sport-art .sport-field {
+  inset: -15% -8% -25% 30%;
+  width: auto;
+  height: 130%;
+  opacity: 0.85;
+}
+
+.sport-art[data-sport="Football"] {
+  color: var(--color-pink);
+}
+
+.sport-art[data-sport="Baseball"] {
+  color: var(--color-cyan);
+}
+
+.sport-art[data-sport="Soccer"] {
+  color: var(--color-fg);
+}
+
+.collector-banner {
+  position: relative;
+  height: 14rem;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-line);
+  background: var(--color-bg-deep);
+  color: var(--color-pink);
+}
+
+@media (min-width: 48rem) {
+  .collector-banner {
+    height: 18rem;
+  }
+}
+
+.slab-plate {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.85rem 0.9rem 1rem;
+}
+
+.sport-door {
+  position: relative;
+  display: flex;
+  min-height: 11rem;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  color: var(--color-fg);
+}
+
+.sport-door-copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  padding: 1.25rem;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-bg) 88%, transparent),
+    color-mix(in srgb, var(--color-bg) 20%, transparent) 70%,
+    transparent
+  );
+}
+
+nav a[aria-current="page"] {
+  color: var(--color-pink);
+}
+
+.card-scrim {
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-bg) 92%, transparent) 0%,
+    color-mix(in srgb, var(--color-bg) 40%, transparent) 55%,
+    transparent 100%
+  );
+}
