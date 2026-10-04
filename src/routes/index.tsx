@@ -3,8 +3,9 @@ import { cards, beats, marketSearch, sportDoors } from "@/lib/demo";
 import { CardFace } from "@/components/market/card-face";
 import { Tape } from "@/components/market/tape";
 import { SportField } from "@/components/market/wax";
+import { CityNight } from "@/components/site/city";
 
-const featured = cards.find((card) => card.id === "jordan") ?? cards[0];
+const featured = cards.find((card) => card.id === "wemby") ?? cards[0];
 const heat = cards.filter((card) => ["lebron", "messi", "clark", "ohtani"].includes(card.id));
 const auctions = cards.filter((card) => card.list === "auction");
 
@@ -25,16 +26,21 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <main>
-      <section className="court-lines">
-        <div className="mx-auto grid w-full max-w-6xl items-center gap-8 px-4 py-8 md:grid-cols-2 md:gap-12 md:px-6 md:py-16">
-          <div className="mx-auto w-full max-w-md md:order-2">
-            <CardFace card={featured} featured />
+      <section className="city-hero">
+        <CityNight />
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-4 pt-6 pb-16 md:px-6 md:pt-8 md:pb-24">
+          <div className="pop-stage">
+            <div className="pop-back" />
+            <div className="pop-front">
+              <CardFace card={featured} featured />
+              <p className="pop-rc">Rookie</p>
+            </div>
           </div>
-          <div className="md:order-1">
+          <div className="city-copy">
             <p className="kicker">We balln.</p>
             <h1 className="display-hero mt-3">The card is the point.</h1>
             <p className="mt-5 max-w-xl text-lg text-muted">
-              A floor for the cards people argue about. Basketball, football, baseball, soccer. See it. Learn it. Take it. $BALLN settles a real buy. It does not get to be the show.
+              Miami heat under Seattle rain. The floor opens on a Wembanyama rookie, pulled out of the skyline. Basketball, football, baseball, soccer. See it. Learn it. Take it. $BALLN settles a real buy. It does not get to be the show.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
@@ -47,9 +53,9 @@ function Home() {
               <Link
                 to="/card/$id"
                 params={{ id: featured.id }}
-                className="inline-flex min-h-11 items-center rounded-full border border-line px-5 font-display text-base font-bold uppercase tracking-wide"
+                className="inline-flex min-h-11 items-center rounded-full border border-line bg-bg/70 px-5 font-display text-base font-bold uppercase tracking-wide"
               >
-                Open the 1/1
+                Open the rookie
               </Link>
             </div>
             <p className="mt-4 max-w-md text-sm text-faint">
