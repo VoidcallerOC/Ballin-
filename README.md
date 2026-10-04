@@ -2,15 +2,22 @@
 
 Prospect demo of a Balln sports-card floor. Demo prices, demo wallet, no chain.
 
-**Stack:** TanStack Start, React 19, Tailwind 4, Nitro with the Vercel preset. Same stack as Your Grails.
+**Stack:** TanStack Start, React 19, Tailwind 4, Nitro with the Vercel preset.
+
+On Vercel, set the application preset to **Nitro** and leave the commands on the preset defaults. This repo already matches them:
+
+| Setting | Value |
+| --- | --- |
+| Framework | `nitro` |
+| Build | `nitro build` |
+| Dev | `nitro dev` |
+| Install | default `npm install` |
+| Output | Nitro writes `.vercel/output` (do not point Output Directory at `dist`) |
 
 ```bash
 npm install
-npm run dev        # http://localhost:8080
-npm run build      # Vite build, Nitro server, Vercel output
-npm run typecheck
+npm run dev        # local preview
+npm run build      # nitro build, then migrations if DATABASE_URL is set
 ```
-
-Nitro is the production server. It is wired in `vite.config.ts` and only runs for `build` and `preview`, so dev stays on one port. Output is `.vercel/output` for Vercel.
 
 Nothing here settles a purchase. Buy, bid, and offer flows are labeled demo and stay in the browser.
