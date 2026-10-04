@@ -117,7 +117,7 @@ export function Frame({ children }: { children: ReactNode }) {
               BALLN<span className="text-pink">.</span>
             </p>
             <p className="mt-3 max-w-md text-muted">
-              Sports first. The card is the product. $BALLN is how a real floor would settle. This one does not settle anything.
+              Sports first, crypto second. The token is the membership card. The game is the point. This floor is a prospect demo. It does not settle a buy.
             </p>
           </div>
           <div className="grid content-start gap-2 text-sm">
@@ -125,7 +125,13 @@ export function Frame({ children }: { children: ReactNode }) {
               weballn.com — the real community
             </a>
             <a className="min-h-11 py-2 text-muted hover:text-fg" href="https://x.com/BallnToken3">
-              @BallnToken3
+              @BallnToken3 — Friday Spaces
+            </a>
+            <a
+              className="min-h-11 py-2 text-muted hover:text-fg"
+              href="https://www.phar.gg/trade?inputCurrency=0x0000000000000000000000000000000000000000&outputCurrency=0x4Afc7838167b77530278483c3d8c1fFe698a912E"
+            >
+              Buy $BALLN on Pharaoh
             </a>
             <a className="min-h-11 py-2 text-muted hover:text-fg" href="https://balln.shop">
               balln.shop prototype

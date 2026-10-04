@@ -4,6 +4,7 @@ import { CardFace } from "@/components/market/card-face";
 import { Tape } from "@/components/market/tape";
 import { SportField } from "@/components/market/wax";
 import { CityNight } from "@/components/site/city";
+import { FromTheCourt } from "@/components/site/from-the-court";
 
 const featured = cards.find((card) => card.id === "wemby") ?? cards[0];
 const heat = cards.filter((card) => ["lebron", "messi", "clark", "ohtani"].includes(card.id));
@@ -40,7 +41,7 @@ function Home() {
             <p className="kicker">We balln.</p>
             <h1 className="display-hero mt-3">The card is the point.</h1>
             <p className="mt-5 max-w-xl text-lg text-muted">
-              Miami heat under Seattle rain. The floor opens on a Wembanyama rookie, pulled out of the skyline. Basketball, football, baseball, soccer. See it. Learn it. Take it. $BALLN settles a real buy. It does not get to be the show.
+              Miami heat under Seattle rain. The floor opens on a Wembanyama rookie, pulled out of the skyline. Sports first, crypto second. The token is the membership card. The game is the point.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
@@ -64,6 +65,8 @@ function Home() {
           </div>
         </div>
       </section>
+
+      <FromTheCourt />
 
       <section className="mx-auto w-full max-w-6xl px-4 py-8 md:px-6" aria-labelledby="heat-title">
         <div className="flex items-end justify-between gap-4">
@@ -150,27 +153,6 @@ function Home() {
             </Link>
           </div>
           <Tape items={beats.slice(0, 4)} />
-        </div>
-      </section>
-
-      <section className="border-t border-line">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-14 md:flex-row md:items-end md:justify-between md:px-6">
-          <div>
-            <p className="kicker">$BALLN</p>
-            <h2 className="mt-2 max-w-xl font-display text-5xl leading-none font-bold uppercase">
-              The token pays the floor. It is not the floor.
-            </h2>
-            <p className="mt-3 max-w-xl text-muted">
-              On a live Balln, checkout in $BALLN is the idea. Here every number is marked demo and pegged at two cents so you can read it. That rate is invented.
-            </p>
-          </div>
-          <Link
-            to="/market"
-            search={marketSearch()}
-            className="inline-flex min-h-11 items-center rounded-full bg-orange px-5 font-display text-base font-bold uppercase tracking-wide text-bg"
-          >
-            Browse the wax
-          </Link>
         </div>
       </section>
     </main>
